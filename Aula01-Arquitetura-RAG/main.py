@@ -8,4 +8,18 @@ os.environ["GOOGLE_API_KEY"] = "AIzaSyCc1XN7WzYTqY5dtGO4bOgRDn2sk5O8BKs"
 # Defining llm
 llm = ChatGoogleGenerativeAI(model = "gemini-1.5-pro-latest", temperature = 0)
 
-print(llm)
+# Exemple 1: Traditional prompt without RAG
+
+## Main question
+question = "What are the work-from-home policies?"
+
+## Prompt template
+traditional_prompt = ChatPromptTemplate.from_template(
+    "Answer this question: {question}"
+)
+
+## Creating chain of execution (Conecting prompt with llm)
+traditional_chain = traditional_prompt | llm
+
+## Response from llm
+traditional_response = traditional_chain.invoke({"question": question})
