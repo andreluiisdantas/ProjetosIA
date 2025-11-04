@@ -6,7 +6,7 @@ from langchain_core.prompts import ChatPromptTemplate
 os.environ["GOOGLE_API_KEY"] = "AIzaSyCc1XN7WzYTqY5dtGO4bOgRDn2sk5O8BKs"
 
 # Defining llm
-llm = ChatGoogleGenerativeAI(model = "gemini-1.5-pro-latest", temperature = 0)
+llm = ChatGoogleGenerativeAI(model = "gemini-1.5-flash-latest", temperature = 0)
 
 # Exemple 1: Traditional prompt without RAG
 
@@ -23,3 +23,5 @@ traditional_chain = traditional_prompt | llm
 
 ## Response from llm
 traditional_response = traditional_chain.invoke({"question": question})
+
+print(traditional_response.content)
